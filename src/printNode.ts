@@ -87,7 +87,11 @@ function printTabbed(node: SyntaxNode, tabLevel: number): string {
           .join(comma)
       );
     case 'global':
-      return tabs + 'global ' + node.names.join(comma);
+      if (typeof(node.names) == 'undefined' || typeof(node.names) == 'string') {
+        return tabs + 'global ' + node.names;
+      } else {
+        return tabs + 'global ' + node.names.join(comma);
+      }
     case 'if':
       return (
         tabs +
