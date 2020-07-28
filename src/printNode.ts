@@ -34,7 +34,6 @@ function printTabbed(node: SyntaxNode, tabLevel: number): string {
       );
     case 'comp_for':
     case 'comp_if':
-      throw 'not implemented';
     case 'continue':
       return tabs + 'continue';
     case 'decorator':
