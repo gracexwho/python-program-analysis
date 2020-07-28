@@ -111,7 +111,7 @@ export class SymbolTable {
   ): ModuleSpec<FunctionSpec> {
     const spec = this.lookupSpec(this.jsonSpecs, modulePath.split("."));
     if (!spec) {
-      console.log(`*** WARNING no spec for module ${modulePath}`);
+      // console.log(`*** WARNING no spec for module ${modulePath}`);
       return;
     }
     if (modulePath) {
@@ -128,7 +128,7 @@ export class SymbolTable {
   ): ModuleSpec<FunctionSpec> {
     const spec = this.lookupSpec(this.jsonSpecs, namePath.split("."));
     if (!spec) {
-      console.log(`*** WARNING no spec for module ${namePath}`);
+      //console.log(`*** WARNING no spec for module ${namePath}`);
       return;
     }
     if (spec) {
@@ -154,7 +154,7 @@ export class SymbolTable {
         }
       });
     } else {
-      console.log(`*** WARNING no spec for module ${namePath}`);
+      //console.log(`*** WARNING no spec for module ${namePath}`);
     }
   }
 
