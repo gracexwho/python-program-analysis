@@ -52,7 +52,8 @@ export class Program {
       this.tree.code.push(...shiftStatementLines(cp.statements, Math.min(...cellLines) - 1));
     });
 
-    this.text = cellPrograms.map(cp => magicsRewriter.rewrite(cp.cell.text + '\n')).join('');
+    //this.text = cellPrograms.map(cp => magicsRewriter.rewrite(cp.cell.text + '\n')).join('');
+    this.text = cellPrograms.map(cp => cp.cell.text + '\n').join('');
   }
 
   readonly text: string;
@@ -144,7 +145,8 @@ export class ProgramBuilder {
       let hasError = cell.hasError;
       try {
         // Parse the cell's code.
-        let tree = ast.parse(magicsRewriter.rewrite(cell.text) + '\n');
+        //let tree = ast.parse(magicsRewriter.rewrite(cell.text) + '\n');
+        let tree = ast.parse(cell.text + '\n');
         statements = tree.code;
         // Annotate each node with cell ID info, for dataflow caching.
         for (let node of ast.walk(tree)) {

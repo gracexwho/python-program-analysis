@@ -75,7 +75,7 @@ export class MagicsRewriter {
    */
   rewriteCellMagic(text: string): string {
     // 
-    if (text.match(/^[^#\s]*\s*%%/gm)) {
+    if (String(text).match(/^[^#\s]*\s*%%/gm)) {
       return text
         .split('\n')
         .map(l => '##' + l) // #%% is used for VS Code Python cell markers, so avoid that combo
@@ -92,7 +92,7 @@ export class MagicsRewriter {
     lineMagicRewriters?: LineMagicRewriter[]
   ): string {
     // Create a mapping from character offsets to line starts.
-    let lines = text.split('\n');
+    let lines = String(text).split('\n');
     let lastLineStart = 0;
     let lineStarts: number[] = lines.map((line, i) => {
       if (i == 0) {
@@ -104,7 +104,7 @@ export class MagicsRewriter {
     });
 
     // Map magic to comment and location.
-    return text.replace(/^\s*(%(?:\\\s*\n|[^\n])+)/gm, (match, magicStmt) => {
+    return String(text).replace(/^\s*(%(?:\\\s*\n|[^\n])+)/gm, (match, magicStmt) => {
       // Find the start and end lines where the character appeared.
       let startLine = -1,
         startCol = -1;
